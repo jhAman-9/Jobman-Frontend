@@ -16,6 +16,7 @@ import Footer from "./components/Layout/Footer";
 import Navbar from "./components/Layout/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser } from "./store/userSlice";
+import './App.css';
 
 const App = () => {
   const { isAutherized, user } = useSelector((store) => store.user);
@@ -23,9 +24,11 @@ const App = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-      const data = await res.json();
-      dispatch(addUser(data));
+      const res = await fetch(
+        "https://jobman-ve25.onrender.com/api/v1/user/profile"
+      );
+      const json = await res.json();
+      dispatch(addUser(json.data.user));
     };
     fetchUser();
   }, [isAutherized]);
