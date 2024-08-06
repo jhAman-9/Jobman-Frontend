@@ -7,7 +7,6 @@ import PopularCompanies from "./PopularCompanies";
 
 const Home = () => {
   const { autherized } = useSelector((store) => store.user);
-  // const dispatch = useDispatch();
 
   if (!autherized) return <Navigate to={"/login"} />;
   return (
