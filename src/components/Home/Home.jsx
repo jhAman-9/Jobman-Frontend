@@ -1,13 +1,24 @@
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import HeroSection from "./HeroSection";
+import HowItWork from "./HowItWork";
+import PopolarCotegories from "./PopolarCotegories";
+import PopularCompanies from "./PopularCompanies";
+
 const Home = () => {
+  const { autherized } = useSelector((store) => store.user);
+  // const dispatch = useDispatch();
+
+  if (!autherized) return <Navigate to={"/login"} />;
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos possimus aut
-      ratione, rerum sunt deleniti enim. Dicta vitae commodi repudiandae error
-      illo quam ipsum suscipit expedita cupiditate laborum consequatur, eos,
-      repellat aperiam explicabo dolorum? Totam recusandae minus necessitatibus
-      animi beatae quidem optio ab quisquam dicta inventore! Delectus hic
-      veritatis possimus.
-    </div>
+    <>
+      <section className="homePage page">
+        <HeroSection />
+        <HowItWork />
+        <PopolarCotegories />
+        <PopularCompanies />
+      </section>
+    </>
   );
 };
 
