@@ -3,30 +3,34 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import {removeUser } from "../../store/userSlice";
+import axios from "axios";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const { isAutherized, user } = useSelector((store) => store.user);
+  const { autherized, user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     try {
-      const res = await fetch(
-        "https://jobman-ve25.onrender.com/api/v1/user/logout"
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/user/logout",
+        {
+          withCredentials: true,
+        }
       );
-      const json = await res.json(json.data.message);
-      toast.success();
+      toast.success(response.data.message);
+      dispatch(removeUser());
       navigate("/login");
     } catch (error) {
       toast.error(error.json.data.message);
-      dispatch(isAutherized(true));
     }
   };
 
   return (
     <>
-      <nav className={isAutherized ? "navbarShow" : "navbarHide"}>
+      <nav className={autherized ? "navbarShow" : "navbarHide"}>
         <div className="container">
           <div className="logo">
             <img src="JobZee-logos__white.png" alt="" />
@@ -37,11 +41,13 @@ const Navbar = () => {
                 ALL JOBS
               </Link>
             </li>
-            <Link to={"/application/getall"} onClick={() => setShow(false)}>
-              {user && user.role === "Employee"
-                ? "APPLICANT APPLICATIONS"
-                : "MY APPLICATIONS"}
-            </Link>
+            <li>
+              <Link to={"/application/getall"} onClick={() => setShow(false)}>
+                {user && user.role === "Employee"
+                  ? "APPLICANT APPLICATIONS"
+                  : "MY APPLICATIONS"}
+              </Link>
+            </li>
             <li>
               <Link to={"/job/getall"} onClick={() => setShow(false)}>
                 All Jobs

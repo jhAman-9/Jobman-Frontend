@@ -1,12 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaPencilAlt, FaRegUser } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiRocket2Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { isAutherized } from "../../store/userSlice";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,44 +17,39 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
 
-  const { isAutherized } = useSelector((store) => store.user);
+  const { autherized } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      const res = await fetch(
-        "https://jobman-ve25.onrender.com/api/v1/user/register",
+      const { data } = await axios.post(
+        "http://localhost:4000/api/v1/user/register",
+        { name, phone, email, role, password },
         {
-          headers: myHeaders,
-          method: "POST",
-          body: JSON.stringify({ name, email, phone, password, role }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
         }
       );
-      console.log(res.status);
-
-      const json = await res.json();
-
-      toast.success(json.data.message);
+      setEmail("");
       setName("");
-      setName("");
+      setPassword("");
       setPhone("");
       setRole("");
-      setPassword("");
-
+      toast.success(data.message);
       dispatch(isAutherized(true));
+      console.log("autherized value", autherized);
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.log("Error :", error);
+      toast.error(error.response?.data?.message);
     }
   };
 
-  if (isAutherized) {
-    return navigate("/");
+  // console.log("Autherized :", autherized);
+
+  if (autherized) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -62,7 +59,7 @@ const Register = () => {
           <div className="header">
             <img src="/JobZeelogo.png" alt="logo" />
             <h3>Create a new account</h3>
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="inputTag">
                 <label>Register As</label>
                 <div>
@@ -125,7 +122,7 @@ const Register = () => {
                   <RiRocket2Fill />
                 </div>
               </div>
-              <button type="submit" onClick={handleRegister}>
+              <button type="submit">
                 Register
               </button>
               <Link to={"/login"}>Login Now</Link>

@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -8,8 +8,8 @@ import appStore from './store/appStore.js'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={appStore} >
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <App />
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Provider>
 );

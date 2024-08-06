@@ -15,26 +15,48 @@ import { Toaster } from "react-hot-toast";
 import Footer from "./components/Layout/Footer";
 import Navbar from "./components/Layout/Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser } from "./store/userSlice";
-import './App.css';
+import { addUser, isAutherized } from "./store/userSlice";
+import "./App.css";
+// import axios from "axios";
 
 const App = () => {
-  const { isAutherized, user } = useSelector((store) => store.user);
+  const { autherized } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch(
-        "https://jobman-ve25.onrender.com/api/v1/user/profile"
-      );
-      const json = await res.json();
-      dispatch(addUser(json.data.user));
+      try {
+        // const response = await axios.get(
+        //   "http://localhost:4000/api/v1/user/profile",
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
+        // dispatch(addUser(response.data.user));
+        // dispatch(isAutherized(true));
+
+        const response = await fetch(
+          "http://localhost:4000/api/v1/user/profile",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          dispatch(addUser(data.user));
+          dispatch(isAutherized(true));
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.log(error);
+        dispatch(isAutherized(false));
+      }
     };
     fetchUser();
-  }, [isAutherized]);
-
-
-  console.log(user);
+  }, [autherized]);
 
   return (
     <>

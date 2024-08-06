@@ -4,19 +4,19 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
-    isAutherized: false,
+    autherized: false,
   },
   reducers: {
     addUser: (state, action) => {
       state.user = action.payload;
-      state.isAutherized = true;
+      state.autherized = true;
     },
     removeUser: (state) => {
       state.user = null;
-      state.isAutherized = false;
+      state.autherized = false;
     },
-    isAutherized: (state) => {
-      return state.isAutherized;
+    isAutherized: (state,action) => {
+      state.autherized = action.payload;
     },
   },
 });
