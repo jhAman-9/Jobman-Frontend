@@ -23,7 +23,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         "http://localhost:4000/api/v1/user/register",
         { name, phone, email, role, password },
         {
@@ -38,7 +38,7 @@ const Register = () => {
       setPassword("");
       setPhone("");
       setRole("");
-      toast.success(data.message);
+      toast.success(response.data.message);
       dispatch(isAutherized(true));
       console.log("autherized value", autherized);
     } catch (error) {
@@ -58,80 +58,76 @@ const Register = () => {
         <div className="container">
           <div className="header">
             <img src="/JobZeelogo.png" alt="logo" />
-            <h3>Create a new account</h3>
-            <form onSubmit={handleRegister}>
-              <div className="inputTag">
-                <label>Register As</label>
-                <div>
-                  <select
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                  >
-                    <option value="">Select role</option>
-                    <option value="Employee">Employee</option>
-                    <option value="Job Seeker">Job Seeker</option>
-                  </select>
-                  <FaRegUser />
-                </div>
+            <h3>Login to your account</h3>
+          </div>
+
+          <form onSubmit={handleRegister}>
+            <div className="inputTag">
+              <label>Register As</label>
+              <div>
+                <select value={role} onChange={(e) => setRole(e.target.value)}>
+                  <option value="">Select role</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Job Seeker">Job Seeker</option>
+                </select>
+                <FaRegUser />
               </div>
-              <div className="inputTag">
-                <label>Name</label>
-                <div>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter Your Name"
-                  />
-                  <FaPencilAlt />
-                </div>
+            </div>
+            <div className="inputTag">
+              <label>Name</label>
+              <div>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter Your Name"
+                />
+                <FaPencilAlt />
               </div>
-              <div className="inputTag">
-                <label>Email</label>
-                <div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter Your Email"
-                  />
-                  <MdOutlineMailOutline />
-                </div>
+            </div>
+            <div className="inputTag">
+              <label>Email</label>
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter Your Email"
+                />
+                <MdOutlineMailOutline />
               </div>
-              <div className="inputTag">
-                <label>Phone Number</label>
-                <div>
-                  <input
-                    type="number"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="0123456789"
-                  />
-                  <FaPhoneFlip />
-                </div>
+            </div>
+            <div className="inputTag">
+              <label>Phone Number</label>
+              <div>
+                <input
+                  type="number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="0123456789"
+                />
+                <FaPhoneFlip />
               </div>
-              <div className="inputTag">
-                <label>Password</label>
-                <div>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter Password"
-                  />
-                  <RiRocket2Fill />
-                </div>
+            </div>
+            <div className="inputTag">
+              <label>Password</label>
+              <div>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter Password"
+                />
+                <RiRocket2Fill />
               </div>
-              <button type="submit">
-                Register
-              </button>
-              <Link to={"/login"}>Login Now</Link>
-            </form>
+            </div>
+            <button type="submit">Register</button>
+            <Link to={"/login"}>Login Now</Link>
+          </form>
           </div>
           <div className="banner">
             <img src="/register.png" alt="register-banner" />
           </div>
-        </div>
       </section>
     </>
   );
