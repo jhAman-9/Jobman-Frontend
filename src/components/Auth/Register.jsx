@@ -40,7 +40,6 @@ const Register = () => {
       setRole("");
       toast.success(response.data.message);
       dispatch(isAutherized(true));
-      console.log("autherized value", autherized);
     } catch (error) {
       toast.error(error.response?.data?.message);
     }
@@ -58,7 +57,7 @@ const Register = () => {
         <div className="container">
           <div className="header">
             <img src="/JobZeelogo.png" alt="logo" />
-            <h3>Login to your account</h3>
+            <h3>Create A New Account</h3>
           </div>
 
           <form onSubmit={handleRegister}>

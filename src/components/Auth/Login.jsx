@@ -62,7 +62,6 @@ const Register = () => {
       setRole("");
       toast.success(data.message);
       dispatch(isAutherized(true));
-      console.log("autherized value", autherized);
     } catch (error) {
       toast.error(error.message);
     }
