@@ -107,6 +107,9 @@ const MyJobs = () => {
     );
   };
 
+  console.log(myJobs);
+  
+
   return (
     <div className="myJobs page">
       <div className="container">
@@ -275,11 +278,11 @@ const MyJobs = () => {
                         <div>
                           <span>Expire : </span>
                           <select
-                            value={element.expire}
+                            value={element.expired}
                             onChange={(e) =>
                               handleInputChange(
                                 element._id,
-                                "expire",
+                                "expired",
                                 e.target.value
                               )
                             }
