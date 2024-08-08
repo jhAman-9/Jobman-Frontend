@@ -7,7 +7,7 @@ const Footer = () => {
   const { autherized } = useSelector((store) => store.user);
   return (
     <footer className={autherized ? "footerShow" : "footerHide"}>
-      <div>&copy; All Rights Reserved to Aj</div>
+      <div>&copy; All Rights Reserved to AJ</div>
       <div>
         <Link to={"/"} target="_blank">
           <FaFacebookF />{" "}
