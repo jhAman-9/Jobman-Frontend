@@ -18,8 +18,6 @@ const JobDetails = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
-
           setJob(data.job);
         } else {
           throw new Error("Job Data Not Found");
