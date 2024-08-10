@@ -92,17 +92,17 @@ const Application = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter Your Email"
             />
+              <input
+                type="number"
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
+                placeholder="123456789"
+              />
             <input
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Enter Your Address"
-            />
-            <input
-              type="number"
-              value={phone}
-              onChange={(e) => setphone(e.target.value)}
-              placeholder="123456789"
             />
             <textarea
               value={coverLetter}
