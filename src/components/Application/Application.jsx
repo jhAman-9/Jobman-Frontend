@@ -50,7 +50,7 @@ const Application = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        toast(errorData.message);
+        toast.error(errorData.message);
         throw new Error(errorData.message);
       }
       setEmail("");
@@ -63,7 +63,7 @@ const Application = () => {
       const data = await response.json();
       console.log(data);
       
-      toast(data.message);
+      toast.success(data.message);
       navigate("/job/getall");
     } catch (error) {
       toast.error(error.message);
