@@ -78,7 +78,7 @@ const Application = () => {
     <>
       <section className="application">
         <div className="container">
-          <h3>Application Form</h3>
+          <h3 className="font-bold text-2xl text-rose-700 text-center">Application Form</h3>
           <form onSubmit={handleFileInput}>
             <input
               type="text"

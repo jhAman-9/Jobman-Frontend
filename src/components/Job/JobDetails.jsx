@@ -36,7 +36,9 @@ const JobDetails = () => {
     <>
       <div className="jobDetail page">
         <div className="container">
-          <h3 className="text-2xl font-bold">Job Details</h3>
+          <h3 className="font-bold text-3xl text-gray-700">
+            Job Details
+          </h3>
           <div className="banner">
             <p>
               Title : <span>{job.title}</span>
@@ -57,9 +59,7 @@ const JobDetails = () => {
               Country : <span>{job.country}</span>
             </p>
             <p>
-              Salary :
-              <span>
-              </span>
+              Salary :<span></span>
               {job.fixedSalary ? (
                 <span>{job.fixedSalary}</span>
               ) : (

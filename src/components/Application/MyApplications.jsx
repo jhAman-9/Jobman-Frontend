@@ -115,7 +115,7 @@ const MyApplications = () => {
     <section className="my_applications page">
       {user && user.role === "Employee" ? (
         <div className="container">
-          <h3 className="font-bold text-2xl text-rose-700 text-center">
+          <h3 className="font-bold text-3xl text-rose-700 text-center">
             My Application
           </h3>
           {applications.length === 0 ? (
@@ -136,7 +136,7 @@ const MyApplications = () => {
         </div>
       ) : (
         <div className="container">
-          <h3 className="font-bold text-2xl text-rose-700 text-center">
+          <h3 className="font-bold text-3xl text-rose-700 text-center">
             Job Seeker Applications
           </h3>
 

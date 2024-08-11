@@ -34,7 +34,7 @@ const Jobs = () => {
   return (
     <div className="w-full h-screen">
       <div className="w-full h-[100%] m-4">
-        <h1 className="text-4xl font-bold text-center">All Jobs</h1>
+        <h1 className="text-4xl font-bold text-center text-black">All Jobs</h1>
         <div className="flex flex-wrap justify-center">
           {jobs.map((element) => {
             return (
