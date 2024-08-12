@@ -4,7 +4,7 @@
 
 - >Step 1 : Create a _redirects file:
 
-    In the root of your React project, create a new file named _redirects (without any extension).
+    In the root of your React project (in public folder), create a new file named _redirects (without any extension).
     Add the following line to the _redirects file:
     bash
     Copy code
