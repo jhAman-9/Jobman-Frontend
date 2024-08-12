@@ -55,7 +55,7 @@ const App = () => {
         dispatch(isAutherized(false));
       }
     };
-    fetchUser();
+    if(autherized) fetchUser();
   }, [autherized]);
 
   return (

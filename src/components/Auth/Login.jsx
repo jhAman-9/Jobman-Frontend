@@ -56,10 +56,13 @@ const Register = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
+        toast.error(errorData.message)
         throw new Error(errorData.message);
       }
 
       const data = await response.json();
+      console.log(data);
+      
       setEmail("");
       setPassword("");
       setRole("");
