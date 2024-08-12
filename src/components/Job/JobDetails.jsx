@@ -11,10 +11,13 @@ const JobDetails = () => {
   useEffect(() => {
     const fetchSingleJobData = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/v1/job/${id}`, {
-          credentials: "include",
-          method: "GET",
-        });
+        const response = await fetch(
+          `https://jobman-ve25.onrender.com/api/v1/job/${id}`,
+          {
+            credentials: "include",
+            method: "GET",
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
