@@ -14,7 +14,7 @@ const MyJobs = () => {
     const fetchMyJobs = async () => {
       try {
         const response = await fetch(
-          "http://localhost:4000/api/v1/job/myjobs",
+          "https://jobman-ve25.onrender.com/api/v1/job/myjobs",
           {
             method: "GET",
             credentials: "include",
@@ -51,7 +51,7 @@ const MyJobs = () => {
     const UpdateThisJob = myJobs.find((job) => job._id === jobId);
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/job/update/" + jobId,
+        "https://jobman-ve25.onrender.com/api/v1/job/update/" + jobId,
         {
           method: "PUT",
           headers: {
@@ -79,7 +79,7 @@ const MyJobs = () => {
   const handleJobDelete = async (jobId) => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/job/delete/" + jobId,
+        "https://jobman-ve25.onrender.com/api/v1/job/delete/" + jobId,
         {
           method: "DELETE",
           credentials: "include",
@@ -108,7 +108,6 @@ const MyJobs = () => {
   };
 
   console.log(myJobs);
-  
 
   return (
     <div className="myJobs page">

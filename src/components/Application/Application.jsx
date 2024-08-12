@@ -35,7 +35,7 @@ const Application = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/application/jobseeker/post",
+        "https://jobman-ve25.onrender.com/api/v1/application/jobseeker/post",
         {
           credentials: "include",
           method: "POST",
@@ -62,7 +62,7 @@ const Application = () => {
 
       const data = await response.json();
       console.log(data);
-      
+
       toast.success(data.message);
       navigate("/job/getall");
     } catch (error) {
@@ -78,7 +78,9 @@ const Application = () => {
     <>
       <section className="application">
         <div className="container">
-          <h3 className="font-bold text-2xl text-rose-700 text-center">Application Form</h3>
+          <h3 className="font-bold text-2xl text-rose-700 text-center">
+            Application Form
+          </h3>
           <form onSubmit={handleFileInput}>
             <input
               type="text"
@@ -92,12 +94,12 @@ const Application = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter Your Email"
             />
-              <input
-                type="number"
-                value={phone}
-                onChange={(e) => setphone(e.target.value)}
-                placeholder="123456789"
-              />
+            <input
+              type="number"
+              value={phone}
+              onChange={(e) => setphone(e.target.value)}
+              placeholder="123456789"
+            />
             <input
               type="text"
               value={address}

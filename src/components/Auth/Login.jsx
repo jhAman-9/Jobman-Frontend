@@ -20,7 +20,7 @@ const Register = () => {
   // e.preventDefault();
   // try {
   //   const response = await axios.post(
-  //     "http://localhost:4000/api/v1/user/login",
+  //     "https://jobman-ve25.onrender.com/api/v1/user/login",
   //     { email, role, password },
   //     {
   //       headers: {
@@ -42,14 +42,17 @@ const Register = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // This is equivalent to `withCredentials: true` in axios
-        body: JSON.stringify({ email, role, password }),
-      });
+      const response = await fetch(
+        "https://jobman-ve25.onrender.com/api/v1/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // This is equivalent to `withCredentials: true` in axios
+          body: JSON.stringify({ email, role, password }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

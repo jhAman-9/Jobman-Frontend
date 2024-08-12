@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "https://jobman-ve25.onrender.com/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {
@@ -123,10 +123,10 @@ const Register = () => {
             <button type="submit">Register</button>
             <Link to={"/login"}>Login Now</Link>
           </form>
-          </div>
-          <div className="banner">
-            <img src="/register.png" alt="register-banner" />
-          </div>
+        </div>
+        <div className="banner">
+          <img src="/register.png" alt="register-banner" />
+        </div>
       </section>
     </>
   );

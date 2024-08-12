@@ -19,7 +19,7 @@ const MyApplications = () => {
       const fetchEmployeeApplications = async () => {
         try {
           const response = await fetch(
-            "http://localhost:4000/api/v1/application/employee/getall",
+            "https://jobman-ve25.onrender.com/api/v1/application/employee/getall",
             {
               credentials: "include",
               method: "GET",
@@ -45,7 +45,7 @@ const MyApplications = () => {
       const fetchJobSeekerApplications = async () => {
         try {
           const response = await fetch(
-            "http://localhost:4000/api/v1/application/jobseeker/getall",
+            "https://jobman-ve25.onrender.com/api/v1/application/jobseeker/getall",
             {
               credentials: "include",
               method: "GET",
@@ -77,7 +77,8 @@ const MyApplications = () => {
   const handleDeleteApplication = async (id) => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/application/jobseeker/delete/" + id,
+        "https://jobman-ve25.onrender.com/api/v1/application/jobseeker/delete/" +
+          id,
         {
           credentials: "include",
           method: "DELETE",

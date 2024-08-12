@@ -11,7 +11,7 @@ const Jobs = () => {
     const fetchAllJobs = async () => {
       try {
         const response = await fetch(
-          "http://localhost:4000/api/v1/job/getall",
+          "https://jobman-ve25.onrender.com/api/v1/job/getall",
           {
             method: "GET",
             credentials: "include",
@@ -44,7 +44,9 @@ const Jobs = () => {
               >
                 <div className="flex flex-col justify-center items-center p-4 text-center shadow-lg w-full h-full">
                   <div className="bg-[#12343b] text-[#fff5d7] w-2/3 h-1/3 flex justify-center items-center">
-                    <span className="font-bold text-xl text-center">{element.title}</span>
+                    <span className="font-bold text-xl text-center">
+                      {element.title}
+                    </span>
                   </div>
                   <div className="bg-[#c89666] text-white w-full p-2 px-4 h-2/3  overflow-y-scroll">
                     <p className="text-sm">

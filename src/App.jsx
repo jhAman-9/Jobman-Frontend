@@ -27,7 +27,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         // const response = await axios.get(
-        //   "http://localhost:4000/api/v1/user/profile",
+        //   "https://jobman-ve25.onrender.com/api/v1/user/profile",
         //   {
         //     withCredentials: true,
         //   }
@@ -36,7 +36,7 @@ const App = () => {
         // dispatch(isAutherized(true));
 
         const response = await fetch(
-          "http://localhost:4000/api/v1/user/profile",
+          "https://jobman-ve25.onrender.com/api/v1/user/profile",
           {
             method: "GET",
             credentials: "include",

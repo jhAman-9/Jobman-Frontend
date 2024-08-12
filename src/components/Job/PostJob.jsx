@@ -32,35 +32,38 @@ const PostJob = () => {
         setFixedSalary("");
       }
 
-      const response = await fetch("http://localhost:4000/api/v1/job/postjob", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          fixedSalary.length >= 4
-            ? {
-                title,
-                description,
-                city,
-                category,
-                country,
-                location,
-                fixedSalary,
-              }
-            : {
-                title,
-                description,
-                city,
-              country,
-                category,
-                location,
-                salaryFrom,
-                salaryTo,
-              }
-        ),
-      });
+      const response = await fetch(
+        "https://jobman-ve25.onrender.com/api/v1/job/postjob",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(
+            fixedSalary.length >= 4
+              ? {
+                  title,
+                  description,
+                  city,
+                  category,
+                  country,
+                  location,
+                  fixedSalary,
+                }
+              : {
+                  title,
+                  description,
+                  city,
+                  country,
+                  category,
+                  location,
+                  salaryFrom,
+                  salaryTo,
+                }
+          ),
+        }
+      );
       if (!response.ok) {
         const ErrorData = await response.json();
         throw new Error(ErrorData.message);

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {removeUser } from "../../store/userSlice";
+import { removeUser } from "../../store/userSlice";
 import axios from "axios";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
   const handleLogOut = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        "https://jobman-ve25.onrender.com/api/v1/user/logout",
         {
           withCredentials: true,
         }
